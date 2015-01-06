@@ -52,10 +52,10 @@ function OnMouseUp () {
 		connected = CheckIfInCorrectPlace();
 	}
 	if (connected) {
-		transform.position.z = zPos - 0.5;
+		transform.position.z = zPos + 0.5;
 		transform.position.x = correctPos.x;
 		transform.position.y = correctPos.y;
-		
+		ParticleBurst();
 	}
 	//CheckForMatch();
 }
@@ -89,6 +89,11 @@ function SetPosition () {
 	zPos = transform.position.z;
 }
 
+function ParticleBurst () {
+	GetComponent(ParticleSystem).Play();
+	yield WaitForSeconds(0.5);
+	GetComponent(ParticleSystem).Stop();
+}
 
 /*
 
