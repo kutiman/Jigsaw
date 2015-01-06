@@ -23,7 +23,7 @@ function Update () {
 }
 
 function SetImage () {
-	var str = "Sprites/image_1_" + gridPos.x.ToString() + gridPos.y.ToString();
+	var str = "Sprites/image_" + scrGame.currentLevel.ToString() + "_" + gridPos.x.ToString() + gridPos.y.ToString();
 	spriteArr = Resources.LoadAll(str);
 	
 	GetComponent(SpriteRenderer).sprite = spriteArr[1];
@@ -142,6 +142,7 @@ function ConnectToConnector (con : GameObject) {
 	connector = con;
 }
 */
+
 
 
 

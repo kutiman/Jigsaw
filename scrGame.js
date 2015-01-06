@@ -1,14 +1,27 @@
 ﻿#pragma strict
 
+static var currentLevel : int = 4;
+
 function Start () {
-	CreatePieces();
+	OpenLevel(currentLevel);
 }
 
 function Update () {
-
+	if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Escape)) {
+		Application.Quit();
+	}
 }
 
 function CreatePieces () {
+
+	var oldPieces : Array = new Array();
+	oldPieces = GameObject.FindGameObjectsWithTag("tagPiece");
+	for (var itemP : GameObject in oldPieces) {Destroy(itemP);}
+	
+	var oldBacks : Array = new Array();
+	oldBacks = GameObject.FindGameObjectsWithTag("tagPiece");
+	for (var itemB : GameObject in oldBacks) {Destroy(itemB);}
+	
 	for (var i = 0; i < 6; i++) {
 		for (var n = 0; n < 4; n++) {
 			var obj : GameObject = GameObject.Instantiate(Resources.Load("Prefabs/objPiece"));
@@ -22,3 +35,7 @@ function GetGridPositions () {
 	var posArr : Vector2;
 }
 
+function OpenLevel (levelNumber : int) {
+	currentLevel = levelNumber;
+	CreatePieces();
+}
