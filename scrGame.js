@@ -1,4 +1,4 @@
-﻿#pragma strict
+#pragma strict
 
 static var currentLevel : int = 0;
 
@@ -36,7 +36,6 @@ function GetGridPositions () {
 }
 
 static function OpenLevel (levelNumber : int) {
-	//if (Application.loadedLevel != Application.levelCount - 1) {Application.LoadLevel(Application.levelCount - 1);}
 	currentLevel = levelNumber;
 	CreatePieces();
 }
