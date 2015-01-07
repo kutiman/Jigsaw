@@ -23,10 +23,10 @@ function Update () {
 }
 
 function SetImage () {
-	var str = "Sprites/image_" + scrGame.currentLevel.ToString() + "_" + gridPos.x.ToString() + gridPos.y.ToString();
+	var str = "Sprites/image_" + scrGame.currentLevel.ToString() ; //+ "_" + gridPos.x.ToString() + gridPos.y.ToString();
 	spriteArr = Resources.LoadAll(str);
 	
-	GetComponent(SpriteRenderer).sprite = spriteArr[1];
+	GetComponent(SpriteRenderer).sprite = spriteArr[gridPos.x + gridPos.y * 6 + 1];
 }
 
 function OnMouseDown() {

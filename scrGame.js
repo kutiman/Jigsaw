@@ -1,9 +1,9 @@
 ﻿#pragma strict
 
-static var currentLevel : int = 4;
+static var currentLevel : int = 0;
 
 function Start () {
-	OpenLevel(currentLevel);
+	DontDestroyOnLoad (transform.gameObject);
 }
 
 function Update () {
@@ -12,14 +12,14 @@ function Update () {
 	}
 }
 
-function CreatePieces () {
+static function CreatePieces () {
 
 	var oldPieces : Array = new Array();
 	oldPieces = GameObject.FindGameObjectsWithTag("tagPiece");
 	for (var itemP : GameObject in oldPieces) {Destroy(itemP);}
 	
 	var oldBacks : Array = new Array();
-	oldBacks = GameObject.FindGameObjectsWithTag("tagPiece");
+	oldBacks = GameObject.FindGameObjectsWithTag("tagBack");
 	for (var itemB : GameObject in oldBacks) {Destroy(itemB);}
 	
 	for (var i = 0; i < 6; i++) {
@@ -35,7 +35,8 @@ function GetGridPositions () {
 	var posArr : Vector2;
 }
 
-function OpenLevel (levelNumber : int) {
+static function OpenLevel (levelNumber : int) {
+	//if (Application.loadedLevel != Application.levelCount - 1) {Application.LoadLevel(Application.levelCount - 1);}
 	currentLevel = levelNumber;
 	CreatePieces();
 }
