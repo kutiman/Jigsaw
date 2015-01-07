@@ -42,6 +42,13 @@ function OnMouseDown() {
 function OnMouseDrag() {
 	if (!connected) {
 		transform.position = Camera.main.ScreenToWorldPoint(Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+		connected = CheckIfInCorrectPlace();
+	}
+	if (connected) {
+		transform.position.z = zPos + 0.5;
+		transform.position.x = correctPos.x;
+		transform.position.y = correctPos.y;
+		ParticleBurst();
 	}
 }
 
@@ -49,7 +56,7 @@ function OnMouseUp () {
 
 	if (!connected) {
 		transform.position.z = zPos;
-		connected = CheckIfInCorrectPlace();
+		
 	}
 	if (connected) {
 		transform.position.z = zPos + 0.5;

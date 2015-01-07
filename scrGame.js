@@ -10,6 +10,7 @@ function Update () {
 	if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Escape)) {
 		Application.Quit();
 	}
+	CheckForWinning ();
 }
 
 static function CreatePieces () {
@@ -38,4 +39,37 @@ function GetGridPositions () {
 static function OpenLevel (levelNumber : int) {
 	currentLevel = levelNumber;
 	CreatePieces();
+	CreateGrid();
 }
+
+static function CreateGrid () {
+	var grid : GameObject = GameObject.FindGameObjectWithTag("tagGrid");
+	if (!grid) {
+		GameObject.Instantiate(Resources.Load("Prefabs/objGrid"));
+	}
+	var plane : GameObject = GameObject.FindGameObjectWithTag("tagPlane");
+	if (!plane) {
+		GameObject.Instantiate(Resources.Load("Prefabs/Plane"));
+	}
+}
+
+static function CheckForWinning () {
+	var levelWon = false;
+	var allPiecesList = GameObject.FindGameObjectsWithTag("tagPiece");
+	var totalConnectedPieces : int = 0;
+	for (var i : GameObject in allPiecesList) {
+		if (i.GetComponent(scrPiece).connected) {totalConnectedPieces++;}
+	}
+	if (totalConnectedPieces > 0 && totalConnectedPieces == allPiecesList.Length) {
+		levelWon = true;
+	}
+	return levelWon;
+}
+
+
+
+
+
+
+
+
