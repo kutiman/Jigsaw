@@ -89,9 +89,13 @@ function CreateBackPiece () {
 function SetPosition () {
 	var posX : float;
 	var side : int = (gridPos.y * 4 + gridPos.x) % 2;
-	if (side == 0) {posX = Random.Range(-6.4,-5.6);}
-	else {posX = Random.Range(6.4,5.6);}
-	var randPos = Vector3(posX, Random.Range(-4.0,4.0), -1);
+	//if (side == 0) {posX = Random.Range(-6.4,-5.6);}
+	//else {posX = Random.Range(6.4,5.6);}
+	// debugging
+	if (side == 0) {posX = Random.Range(0,0);}
+	else {posX = Random.Range(0,0);}
+	// end
+	var randPos = Vector3(posX, Random.Range/*(-4.0,4.0)*/(0,0), -1);
 	transform.position = randPos;
 	zPos = transform.position.z;
 }
